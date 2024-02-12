@@ -297,7 +297,7 @@ export default function Root() {
                     },
                     "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
                       // borderColor: "#E0F7FA",
-                      border: "1px solid 'primary.light'",
+                      border: "1px solid #E0E0E0",
                     },
                   },
                 }}

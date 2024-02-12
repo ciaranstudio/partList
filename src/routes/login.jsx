@@ -65,7 +65,32 @@ export async function loader() {
   return null;
 }
 
-const defaultTheme = createTheme();
+const theme = createTheme({
+  // shadows: ["none"],
+  palette: {
+    primary: {
+      main: "#424242",
+      light: "#E0E0E0",
+    },
+    secondary: {
+      main: "#E0E0E0",
+      light: "#E0E0E0",
+    },
+  },
+  // components: {
+  //   MuiSelect: {
+  //     styleOverrides: {
+  //       standard: {
+  //         backgroundColor: "#e8e8e8",
+  //         color: "#757575",
+  //         "&:hover": {
+  //           color: "#424242",
+  //         },
+  //       },
+  //     },
+  //   },
+  // },
+});
 
 function SignIn() {
   const n = 8;
@@ -93,7 +118,7 @@ function SignIn() {
   // }, [actionData]);
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Grid
@@ -137,9 +162,9 @@ function SignIn() {
                   // specular="#909090"
                 /> */}
                 <MeshDistortMaterial
-                  distort={0.45}
-                  speed={2}
-                  color="#dbd9be"
+                  distort={0.4}
+                  speed={0.5}
+                  color="#aaaaaa"
                   depthTest={false}
                   flatShading={true}
                 />
@@ -167,7 +192,7 @@ function SignIn() {
                   autoComplete="email"
                   autoFocus
                   size="small"
-                  color="info"
+                  color="primary"
                 />
                 <TextField
                   margin="dense"
@@ -179,6 +204,7 @@ function SignIn() {
                   id="password"
                   autoComplete="current-password"
                   size="small"
+                  color="primary"
                 />
                 {/* <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -189,7 +215,7 @@ function SignIn() {
                   type="submit"
                   fullWidth
                   variant="contained"
-                  color="info"
+                  color="primary"
                   sx={{ mt: 1, mb: 2 }}
                   disabled={isLoggingIn}
                 >
