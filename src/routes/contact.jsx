@@ -95,7 +95,7 @@ export default function Contact() {
             <Link
               href={`https://instagram.com/${contact.instagram}`}
               rel="noreferrer"
-              sx={{ mr: 3, textDecoration: "none", color: "info.secondary" }}
+              sx={{ mr: 3, textDecoration: "none" }}
             >
               {contact.instagram}
             </Link>
@@ -106,7 +106,7 @@ export default function Contact() {
             <Link
               href={`https://instagram.com/${contact.instagram}`}
               rel="noreferrer"
-              sx={{ textDecoration: "none", color: "info.main" }}
+              sx={{ textDecoration: "none" }}
             >
               {contact.website}
             </Link>

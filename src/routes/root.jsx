@@ -44,7 +44,6 @@ import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Clear from "@mui/icons-material/Clear";
 
-
 export async function action() {
   const contact = await createContact();
   return redirect(`/admin/contacts/${contact.id}/edit`);
@@ -112,9 +111,6 @@ const Drawer = styled(MuiDrawer, {
   },
 }));
 
-// TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
-
 export default function Root() {
   const [open, setOpen] = useState(false);
   const toggleDrawer = () => {
@@ -143,6 +139,33 @@ export default function Root() {
     setSelectedIndex(id);
   };
 
+  const theme = createTheme({
+    // shadows: ["none"],
+    palette: {
+      primary: {
+        main: "#424242",
+        light: "#E0E0E0",
+      },
+      secondary: {
+        main: "#E0E0E0",
+        light: "#E0E0E0",
+      },
+    },
+    // components: {
+    //   MuiSelect: {
+    //     styleOverrides: {
+    //       standard: {
+    //         backgroundColor: "#e8e8e8",
+    //         color: "#757575",
+    //         "&:hover": {
+    //           color: "#424242",
+    //         },
+    //       },
+    //     },
+    //   },
+    // },
+  });
+
   useEffect(() => {
     if (value) {
       navigate(`contacts/${value.id}`);
@@ -157,10 +180,10 @@ export default function Root() {
 
   return (
     <>
-      <ThemeProvider theme={defaultTheme}>
+      <ThemeProvider theme={theme}>
         <Box sx={{ display: "flex" }}>
           <CssBaseline />
-          <AppBar position="absolute" open={open} color="info">
+          <AppBar position="absolute" open={open} color="primary">
             <Toolbar
               sx={{
                 pr: "0", // previously 24px to keep right padding when drawer closed
@@ -186,7 +209,9 @@ export default function Root() {
                 sx={{ flexGrow: 1 }}
               ></Typography>
               <Autocomplete
-              clearIcon={<Clear fontSize="small" sx={{color: "#eeeeee"}} />}
+                clearIcon={
+                  <Clear fontSize="small" sx={{ color: "primary.light" }} />
+                }
                 selectOnFocus={false}
                 forcePopupIcon={false}
                 aria-label="Search contacts"
@@ -215,9 +240,9 @@ export default function Root() {
                     InputLabelProps={{
                       sx: {
                         // color: "#eeeeee",
-                        "&": { color: "#eeeeee" },
-                        "&:hover": { color: "#eeeeee" },
-                        "&.Mui-focused": { color: "#eeeeee" },
+                        "&": { color: "primary.light" },
+                        "&:hover": { color: "primary.light" },
+                        "&.Mui-focused": { color: "primary.light" },
                       },
                     }}
                   />
@@ -245,18 +270,18 @@ export default function Root() {
                   //   },
                   "& .MuiOutlinedInput-input": {
                     "&": {
-                      color: "#eeeeee",
+                      color: "primary.light",
                     },
                     "&:hover": {
-                      color: "#eeeeee",
+                      color: "primary.light",
                     },
                     "&.Mui-focused": {
-                      color: "#eeeeee",
+                      color: "primary.light",
                     },
                   },
                   "& .MuiOutlinedInput-root": {
                     "& fieldset": {
-                      borderColor: "#eeeeee",
+                      borderColor: "primary.light",
                     },
                     // "&:hover fieldset": {
                     //   borderColor: "#eeeeee",
@@ -265,14 +290,14 @@ export default function Root() {
                     //   borderColor: "##eeeeee",
                     // },
                     "& .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#eeeeee",
+                      borderColor: "primary.light",
                     },
                     "&:hover .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#eeeeee",
+                      borderColor: "primary.light",
                     },
                     "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
                       // borderColor: "#E0F7FA",
-                      border: "1px solid #eeeeee",
+                      border: "1px solid 'primary.light'",
                     },
                   },
                 }}
@@ -407,10 +432,7 @@ export default function Root() {
           <Box
             component="main"
             sx={{
-              backgroundColor: (theme) =>
-                theme.palette.mode === "light"
-                  ? theme.palette.grey[100]
-                  : theme.palette.grey[900],
+              backgroundColor: "primary",
               flexGrow: 1,
               height: "100vh",
               overflow: "auto",

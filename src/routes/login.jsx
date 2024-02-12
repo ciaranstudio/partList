@@ -10,7 +10,7 @@ import { authProvider } from "../auth";
 
 import * as React from "react";
 // import { useEffect } from "react";
-import Avatar from "@mui/material/Avatar";
+// import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -21,17 +21,18 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 // import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
-import Typography from "@mui/material/Typography";
+// import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import {
-  Canvas,
-  // useLoader
-} from "@react-three/fiber";
+import { Canvas, useLoader } from "@react-three/fiber";
 // import Container from "@mui/material/Container";
-import PmndrsVan from "../PmndrsVan";
-import { OrbitControls } from "@react-three/drei";
+// import PmndrsVan from "../PmndrsVan";
+import { OrbitControls, MeshDistortMaterial } from "@react-three/drei";
+// import SphereObjects from "../SphereObjects";
+// import controls from "../debugControls";
+// import CubeAndSpheres from "../CubeAndSpheres";
+// import CanvasLayout from "./canvas";
 
 export async function action({ request }) {
   let formData = await request.formData();
@@ -67,6 +68,8 @@ export async function loader() {
 const defaultTheme = createTheme();
 
 function SignIn() {
+  const n = 8;
+  const smallSphereArgs = [n / 1.25, n * 2, n * 2, 0, Math.PI * 2, 0, Math.PI];
   // const handleSubmit = (event) => {
   //   event.preventDefault();
   //   const data = new FormData(event.currentTarget);
@@ -75,6 +78,7 @@ function SignIn() {
   //     password: data.get("password"),
   //   });
   // };
+  // const debugControls = controls();
   let location = useLocation();
   let params = new URLSearchParams(location.search);
   let from = params.get("from") || "/admin";
@@ -101,20 +105,54 @@ function SignIn() {
           sx={{ minHeight: "100vh" }}
         >
           <Grid item xs={3} sx={{ pb: 20 }}>
-            <Canvas>
+            <Canvas
+              camera={{
+                fov: 45,
+                near: 0.1,
+                far: 75,
+                position: [20, 10, 0],
+              }}
+            >
               <OrbitControls autoRotate />
               <ambientLight />
               <directionalLight intensity={3} />
-              <PmndrsVan scale={0.5} position={[0, -2, 0]} />
+
+              {/* <PmndrsVan scale={0.5} position={[0, -2, 0]} /> */}
+              <mesh
+                // ref={smallSphereRef}
+                visible={true}
+                position={[0, 0, 0]}
+                scale={0.75}
+              >
+                <sphereGeometry
+                  args={[6, 64, 64, 0, Math.PI * 2, 0, Math.PI]}
+                />
+                {/* <meshPhongMaterial
+                  color={debugControls.smallColor}
+                  // side={THREE.DoubleSide}
+                  wireframe={debugControls.wireframe}
+                  opacity={debugControls.spheresOpacity}
+                  transparent
+                  // shininess={50}
+                  // specular="#909090"
+                /> */}
+                <MeshDistortMaterial
+                  distort={0.45}
+                  speed={2}
+                  color="#dbd9be"
+                  depthTest={false}
+                  flatShading={true}
+                />
+              </mesh>
             </Canvas>
-            <Typography component="h1" variant="h5" textAlign={"center"}>
+            {/* <Typography component="h1" variant="h5" textAlign={"center"}>
               Sign in
-            </Typography>
+            </Typography> */}
             <Box
               // component="form"
               // onSubmit={handleSubmit}
               // noValidate
-              sx={{ mt: 1 }}
+              sx={{ mt: 0 }}
             >
               <Form method="post" replace>
                 <input type="hidden" name="redirectTo" value={from} />
@@ -129,6 +167,7 @@ function SignIn() {
                   autoComplete="email"
                   autoFocus
                   size="small"
+                  color="info"
                 />
                 <TextField
                   margin="dense"
