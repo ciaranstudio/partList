@@ -20,6 +20,7 @@
     "@react-three/fiber": "^8.15.12",
     "firebase": "^10.7.1",
     "firebaseui": "^6.1.0",
+    "gsap": "^3.12.5",
     "leva": "^0.9.35",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",

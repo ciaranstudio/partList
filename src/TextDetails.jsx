@@ -2,7 +2,7 @@ import * as React from "react";
 import { useRef, createRef, useEffect, useState } from "react";
 import * as THREE from "three";
 import { Geometry, Base, Subtraction } from "@react-three/csg";
-import { Text, Text3D } from "@react-three/drei";
+import { Edges, Text, Text3D } from "@react-three/drei";
 import controls from "./debugControls";
 
 export default function TextDetails({
@@ -128,7 +128,7 @@ export default function TextDetails({
     if (clickToggle) {
       // setClickToggle(false);
       infoLetterRef.current.material.color = new THREE.Color(
-        "rgb(102, 106, 109)"
+        "rgb(102, 106, 109)",
       );
       // infoSphereRef.current.visible = false;
       mainTextRef.current.visible = true;
@@ -145,7 +145,7 @@ export default function TextDetails({
       });
     } else {
       infoLetterRef.current.material.color = new THREE.Color(
-        "rgb(255, 255, 255)"
+        "rgb(255, 255, 255)",
       );
       // console.log(infoLetterRef.current.material.color);
       // infoSphereRef.current.visible = true;
@@ -273,7 +273,7 @@ export default function TextDetails({
         console.log(""),
         debugControls.screenOpacity,
         true,
-        false
+        false,
       )}
 
       {/* plane behind info sphere for easy click */}
@@ -289,7 +289,7 @@ export default function TextDetails({
           iconClick,
           0,
           false,
-          true
+          true,
         )}
       </group>
 
@@ -339,6 +339,7 @@ export default function TextDetails({
       >
         i
         <meshStandardMaterial color={new THREE.Color("rgb(102, 106, 109)")} />
+        <Edges />
       </Text3D>
     </>
   );

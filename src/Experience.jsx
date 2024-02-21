@@ -1,11 +1,60 @@
 import * as React from "react";
-import { useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { Cloud, Sky, OrbitControls } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 import controls from "./debugControls";
 import CubeAndSpheres from "./CubeAndSpheres";
+import { useProgress } from "@react-three/drei";
+// import gsap from "gsap";
+// import * as THREE from "three";
 
 export default function Experience({ contacts, perfVisible }) {
+  const loadingBarElement = document.querySelector(".loading-bar");
+  const { active, progress, errors, item, loaded, total } = useProgress();
+  // const overlayOpacity = { value: 1 };
+  // const [overlayAlpha, setOverlayAlpha] = useState(1);
+  // const overlayGeometry = new THREE.PlaneGeometry(2, 2, 1, 1);
+  // const overlayMaterial = new THREE.ShaderMaterial({
+  //   transparent: true,
+  //   uniforms: {
+  //     uAlpha: { value: overlayAlpha },
+  //   },
+  //   vertexShader: `
+  //       void main()
+  //       {
+  //           gl_Position = vec4(position, 1.0);
+  //       }
+  //   `,
+  //   fragmentShader: `
+  //       uniform float uAlpha;
+
+  //       void main()
+  //       {
+  //           gl_FragColor = vec4(0.0, 0.0, 0.0, uAlpha);
+  //       }
+  //   `,
+  // });
+
+  useEffect(() => {
+    loadingBarElement.style.transform = `scaleX(${progress / 100})`;
+    if (progress == 100) {
+      window.setTimeout(() => {
+        // animate overlay
+        // gsap.to(overlayOpacity, {
+        //   duration: 1,
+        //   value: 0,
+        //   delay: 1,
+        //   onUpdate: () => {
+        //     setOverlayAlpha(overlayOpacity.value);
+        //   },
+        // });
+        // update loadingBarElement
+        loadingBarElement.classList.add("ended");
+        loadingBarElement.style.transform = "";
+      }, 500);
+    }
+  }, [progress]);
+
   const orbitRef = useRef();
   const debugControls = controls();
   debugControls.perfVisible = perfVisible;
@@ -59,13 +108,15 @@ export default function Experience({ contacts, perfVisible }) {
         opacity={0.8}
       />
 
-      <CubeAndSpheres
-        contacts={contacts}
-        orbitRef={orbitRef}
-        // onClick={() => {
-        //   orbitRef.current.autoRotate = false;
-        // }}
-      />
+      <Suspense fallback={null}>
+        <CubeAndSpheres
+          contacts={contacts}
+          orbitRef={orbitRef}
+          // onClick={() => {
+          //   orbitRef.current.autoRotate = false;
+          // }}
+        />
+      </Suspense>
     </>
   );
 }

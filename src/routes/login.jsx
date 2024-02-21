@@ -163,7 +163,7 @@ function SignIn() {
                 /> */}
                 <MeshDistortMaterial
                   distort={0.4}
-                  speed={0.5}
+                  speed={0}
                   color="#aaaaaa"
                   depthTest={false}
                   flatShading={true}

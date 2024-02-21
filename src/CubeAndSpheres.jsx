@@ -26,7 +26,7 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
     [argW, argH],
     [positionX, positionY, positionZ],
     rotationX,
-    rotationY
+    rotationY,
   ) => {
     return (
       // <mesh position ={ [0, 0.5, 0] }>
@@ -68,7 +68,7 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
     onClick,
     opacity,
     visible,
-    wireframe
+    wireframe,
   ) => {
     return (
       <mesh
@@ -163,14 +163,14 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
         [windowPlaneWidth, windowPlaneHeight],
         [0, -(windowPlaneHeight / 2) + 0.5, 0],
         quarterRotation,
-        0
+        0,
       )}
       {windowPlane(
         true,
         [windowPlaneWidth, windowPlaneHeight],
         [0, windowPlaneHeight / 2 + 0.5, 0],
         quarterRotation,
-        0
+        0,
       )}
 
       {/* front and back */}
@@ -179,14 +179,14 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
         [windowPlaneWidth, windowPlaneHeight],
         [0, 0.5, windowPlaneHeight / 2],
         0,
-        0
+        0,
       )}
       {windowPlane(
         true,
         [windowPlaneWidth, windowPlaneHeight],
         [0, 0.5, -windowPlaneHeight / 2],
         0,
-        0
+        0,
       )}
 
       {/* sides */}
@@ -195,14 +195,14 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
         [windowPlaneHeight, windowPlaneHeight],
         [windowPlaneWidth / 2, 0.5, 0],
         0,
-        quarterRotation
+        quarterRotation,
       )}
       {windowPlane(
         true,
         [windowPlaneHeight, windowPlaneHeight],
         [-windowPlaneWidth / 2, 0.5, 0],
         0,
-        quarterRotation
+        quarterRotation,
       )}
 
       {/* Outer cube box */}
@@ -212,14 +212,14 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
         [windowPlaneWidth + outerCubePlus, windowPlaneHeight + outerCubePlus],
         [0, -((windowPlaneHeight + outerCubePlus) / 2) + 0.5, 0],
         quarterRotation,
-        0
+        0,
       )}
       {windowPlane(
         false,
         [windowPlaneWidth + outerCubePlus, windowPlaneHeight + outerCubePlus],
         [0, (windowPlaneHeight + outerCubePlus) / 2 + 0.5, 0],
         quarterRotation,
-        0
+        0,
       )}
 
       {/* front and back */}
@@ -228,14 +228,14 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
         [windowPlaneWidth + outerCubePlus, windowPlaneHeight + outerCubePlus],
         [0, 0.5, (windowPlaneHeight + outerCubePlus) / 2],
         0,
-        0
+        0,
       )}
       {windowPlane(
         false,
         [windowPlaneWidth + outerCubePlus, windowPlaneHeight + outerCubePlus],
         [0, 0.5, -(windowPlaneHeight + outerCubePlus) / 2],
         0,
-        0
+        0,
       )}
 
       {/* sides */}
@@ -244,14 +244,14 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
         [windowPlaneHeight + outerCubePlus, windowPlaneHeight + outerCubePlus],
         [(windowPlaneWidth + outerCubePlus) / 2, 0.5, 0],
         0,
-        quarterRotation
+        quarterRotation,
       )}
       {windowPlane(
         false,
         [windowPlaneHeight + outerCubePlus, windowPlaneHeight + outerCubePlus],
         [-(windowPlaneWidth + outerCubePlus) / 2, 0.5, 0],
         0,
-        quarterRotation
+        quarterRotation,
       )}
     </>
   );
