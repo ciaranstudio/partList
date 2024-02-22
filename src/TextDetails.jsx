@@ -23,11 +23,8 @@ export default function TextDetails({
   const listTextRef = useRef(contacts.map(() => createRef()));
   const listBiosRef = useRef(contacts.map(() => createRef()));
   const listGroupRef = useRef();
-  // const screenBehindBioRef = useRef();
   const frontScreenRef = useRef();
-  // const bioScreenRef = useRef();
   const infoLetterRef = useRef();
-  // const infoSphereRef = useRef();
   const mainTextRef = useRef();
   const mainTextFrameRef = useRef();
   const debugControls = controls();
@@ -36,7 +33,6 @@ export default function TextDetails({
     setN(contacts.length);
   }, []);
   const infoSpherePosition = [6.05, -6.2, 7.71];
-  // const iconSphereArgs = [n / 19, n * 2, n * 2, 0, Math.PI * 2, 0, Math.PI];
 
   const iconClick = () => {
     setClickToggle(!clickToggle);
@@ -64,27 +60,12 @@ export default function TextDetails({
         position={[0, 0.5, windowPlaneHeight / 2 - customScreenOffset]}
         rotation-x={0}
       >
-        {/* <MeshReflectorMaterial
-          ref={mainTextFrameRef}
-          resolution={512}
-          blur={[500, 500]}
-          mixBlur={0.5}
-          mirror={1}
-          color={debugControls.screenColor}
-          opacity={debugControls.screenOpacity}
-          transparent
-          // side={THREE.DoubleSide}
-        /> */}
         <meshPhongMaterial
           ref={mainTextFrameRef}
           color={debugControls.screenColor}
-          // side={THREE.DoubleSide}
           opacity={debugControls.screenOpacity}
           transparent
           depthTest={true}
-          // shininess={50}
-          // specular="#909090"
-          // depthTest={false}
         />
         <planeGeometry
           args={[
@@ -124,13 +105,10 @@ export default function TextDetails({
     listBiosRef.current.forEach((item) => {
       item.current.visible = false;
     });
-    // console.log("clickToggle = ", clickToggle);
     if (clickToggle) {
-      // setClickToggle(false);
       infoLetterRef.current.material.color = new THREE.Color(
         "rgb(102, 106, 109)",
       );
-      // infoSphereRef.current.visible = false;
       mainTextRef.current.visible = true;
       listGroupRef.current.visible = false;
       listPlanesRef.current.forEach((item) => {
@@ -147,18 +125,11 @@ export default function TextDetails({
       infoLetterRef.current.material.color = new THREE.Color(
         "rgb(255, 255, 255)",
       );
-      // console.log(infoLetterRef.current.material.color);
-      // infoSphereRef.current.visible = true;
       mainTextRef.current.visible = false;
       listGroupRef.current.visible = true;
       mainTextFrameRef.current.opacity = 1;
     }
   }, [clickToggle]);
-
-  // useEffect(() => {
-  //   // console.log("clickedArtistId = ", clickedArtistId);
-  //   // console.log("clickedArtistTextObject = ", clickedArtistTextObject);
-  // }, [clickedArtistId, clickedArtistTextObject]);
 
   return (
     <>
@@ -219,25 +190,11 @@ export default function TextDetails({
               onPointerOver={hoveredArtistName}
               onPointerOut={unhoveredArtistName}
             >
-              {/* <MeshReflectorMaterial
-                ref={listPlanesRef.current[idx]}
-                resolution={512}
-                blur={[500, 500]}
-                mixBlur={0.5}
-                mirror={1}
-                color={debugControls.screenColor}
-                opacity={debugControls.screenOpacity}
-                transparent
-                // side={ THREE.DoubleSide }
-              /> */}
               <meshPhongMaterial
                 ref={listPlanesRef.current[idx]}
                 color={debugControls.screenColor}
-                // side={THREE.DoubleSide}
                 opacity={debugControls.screenOpacity}
                 transparent
-                // shininess={50}
-                // specular="#909090"
                 depthTest={true}
               />
               <planeGeometry args={[4.5, 0.8]} />
@@ -292,44 +249,6 @@ export default function TextDetails({
           true,
         )}
       </group>
-
-      {/* info sphere bottom right of front (text) screen */}
-      {/* <mesh
-        position={infoSpherePosition}
-
-        // onPointerOver={hoveredInfoSphere}
-        // onPointerOut={unhoveredInfoSphere}
-      > */}
-      {/* <sphereGeometry args={iconSphereArgs} /> */}
-      {/* <MeshReflectorMaterial
-          resolution={512}
-          blur={[500, 500]}
-          mixBlur={0.5}
-          mirror={1}
-          color={debugControls.screenColor}
-          opacity={debugControls.screenOpacity}
-          transparent
-          // side={ THREE.DoubleSide }
-          wireframe={debugControls.wireframe}
-        /> */}
-      {/* <MeshDistortMaterial
-          distort={debugControls.biggestDistortion}
-          speed={debugControls.biggestSpeed}
-          color={debugControls.biggestColor}
-          wireframe={debugControls.wireframe}
-          depthTest={false}
-        /> */}
-      {/* <meshPhongMaterial
-          ref={infoSphereRef}
-          color={debugControls.smallestColor}
-          side={THREE.DoubleSide}
-          wireframe={debugControls.wireframe}
-          opacity={debugControls.outerSpheresOpacity}
-          transparent
-          shininess={50}
-          specular="#909090"
-        />
-      </mesh> */}
       {/* info sphere text ("i") */}
       <Text3D
         ref={infoLetterRef}

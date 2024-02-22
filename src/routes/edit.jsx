@@ -3,7 +3,6 @@ import { updateContact } from "../contacts";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-// import Copyright from "../Copyright";
 
 export async function action({ request, params }) {
   const formData = await request.formData();
@@ -104,7 +103,6 @@ export default function EditContact() {
             Cancel
           </Button>
         </Box>
-        {/* <Copyright sx={{ pt: 2.5 }} /> */}
       </Form>
     </>
   );

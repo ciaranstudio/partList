@@ -10,7 +10,6 @@ import {
   useNavigate,
   // useSubmit,
 } from "react-router-dom";
-
 import { getContacts, createContact } from "../contacts";
 import { authProvider } from "../auth";
 import AuthStatus from "../AuthStatus";
@@ -140,7 +139,6 @@ export default function Root() {
   };
 
   const theme = createTheme({
-    // shadows: ["none"],
     palette: {
       primary: {
         main: "#424242",
@@ -151,26 +149,12 @@ export default function Root() {
         light: "#E0E0E0",
       },
     },
-    // components: {
-    //   MuiSelect: {
-    //     styleOverrides: {
-    //       standard: {
-    //         backgroundColor: "#e8e8e8",
-    //         color: "#757575",
-    //         "&:hover": {
-    //           color: "#424242",
-    //         },
-    //       },
-    //     },
-    //   },
-    // },
   });
 
   useEffect(() => {
     if (value) {
       navigate(`contacts/${value.id}`);
       handleListItemClick(value.id);
-      // setValue(null);
     }
   }, [value]);
 
@@ -186,7 +170,7 @@ export default function Root() {
           <AppBar position="absolute" open={open} color="primary">
             <Toolbar
               sx={{
-                pr: "0", // previously 24px to keep right padding when drawer closed
+                pr: "0",
               }}
             >
               <IconButton
@@ -239,7 +223,6 @@ export default function Root() {
                     size="small"
                     InputLabelProps={{
                       sx: {
-                        // color: "#eeeeee",
                         "&": { color: "primary.light" },
                         "&:hover": { color: "primary.light" },
                         "&.Mui-focused": { color: "primary.light" },
@@ -250,24 +233,6 @@ export default function Root() {
                 sx={{
                   width: "25ch",
                   marginRight: "2ch",
-                  // input: {
-                  //   color: "#ff0000",
-                  // },
-                  // "&  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline ":
-                  //   {
-                  //     border: "1px solid #eeeeee",
-                  //   },
-                  // "&  .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline ":
-                  //   {
-                  //     border: "1px solid #eeeeee",
-                  //   },
-                  // "& .MuiOutlinedInput-root .MuiOutlinedInput-input  ": {
-                  //   color: "#eeeeee",
-                  // },
-                  // "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input  ":
-                  //   {
-                  //     color: "#eeeeee",
-                  //   },
                   "& .MuiOutlinedInput-input": {
                     "&": {
                       color: "primary.light",
@@ -283,12 +248,6 @@ export default function Root() {
                     "& fieldset": {
                       borderColor: "primary.light",
                     },
-                    // "&:hover fieldset": {
-                    //   borderColor: "#eeeeee",
-                    // },
-                    // "&.Mui-focused fieldset": {
-                    //   borderColor: "##eeeeee",
-                    // },
                     "& .MuiOutlinedInput-notchedOutline": {
                       borderColor: "primary.light",
                     },
@@ -296,7 +255,6 @@ export default function Root() {
                       borderColor: "primary.light",
                     },
                     "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      // borderColor: "#E0F7FA",
                       border: "1px solid #E0E0E0",
                     },
                   },
@@ -337,7 +295,6 @@ export default function Root() {
             <List component="nav">
               <Form method="post">
                 <ListItemButton
-                  // selected={selectedIndex === -1}
                   onClick={() => handleListItemClick(null)}
                   type="submit"
                   component="button"
@@ -361,38 +318,6 @@ export default function Root() {
               <Collapse in={openNestedList} timeout="auto" unmountOnExit>
                 {contacts.length ? (
                   <List component="div" disablePadding>
-                    {/* <Autocomplete
-                      aria-label="Search contacts"
-                      value={value}
-                      onChange={(event, newValue) => {
-                        console.log("newValue: ", newValue);
-                        setValue(newValue);
-                      }}
-                      inputValue={inputValue}
-                      onInputChange={(event, newInputValue) => {
-                        setInputValue(newInputValue);
-                      }}
-                      isOptionEqualToValue={(option, value) =>
-                        option.first + " " + option.last ===
-                        value.first + " " + value.last
-                      }
-                      getOptionLabel={(option) =>
-                        option.first + " " + option.last
-                      }
-                      options={contacts}
-                      loading={loading}
-                      sx={{
-                        width: "100%",
-                        px: 2,
-                      }}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          label="Search"
-                          variant="filled"
-                        />
-                      )}
-                    /> */}
                     {contacts.map((contact, index) => (
                       <ListItemButton
                         sx={{ pl: 3 }}

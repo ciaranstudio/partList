@@ -7,7 +7,6 @@ import Button from "@mui/material/Button";
 import StarIcon from "@mui/icons-material/Star";
 import StarBorder from "@mui/icons-material/StarBorder";
 import IconButton from "@mui/material/IconButton";
-// import Copyright from "../Copyright";
 
 export async function action({ request, params }) {
   let formData = await request.formData();
@@ -122,7 +121,6 @@ export default function Contact() {
           {contact.notes && <>{contact.notes}</>}
         </Typography>
       </Box>
-      {/* <Copyright sx={{ pt: 2.5 }} /> */}
     </>
   );
 }
@@ -142,7 +140,6 @@ function Favorite({ contact }) {
         component="button"
         name="favorite"
         value={favorite ? "false" : "true"}
-        // sx={{ position: "absolute", top: -14, right: -12 }}
         sx={{ p: 0 }}
       >
         {favorite ? <StarIcon /> : <StarBorder />}

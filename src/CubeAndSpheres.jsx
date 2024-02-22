@@ -1,13 +1,11 @@
 import * as React from "react";
 import { useRef } from "react";
 import * as THREE from "three";
-// import { MeshReflectorMaterial } from "@react-three/drei";
 import { Geometry, Base, Subtraction } from "@react-three/csg";
 import controls from "./debugControls";
 import { missionText } from "./missionText";
 import SphereObjects from "./SphereObjects";
 import TextDetails from "./TextDetails";
-// import { Loader } from "@react-three/drei";
 
 export default function CubeAndSpheres({ contacts, orbitRef }) {
   const debugControls = controls();
@@ -29,7 +27,6 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
     rotationY,
   ) => {
     return (
-      // <mesh position ={ [0, 0.5, 0] }>
       <mesh
         position={[positionX, positionY, positionZ]}
         rotation-x={rotationX}
@@ -44,13 +41,10 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
           specular="#909090"
         />
         <Geometry>
-          {/** The chain begins with a base geometry, where all operations are carried out on. */}
           <Base>
             <planeGeometry args={[argW, argH]} />
           </Base>
-          {/** Chain your boolean operations: Addition, Subtraction, Difference and Intersection. */}
           <Subtraction>
-            {/** Geometry can be set by prop or by child, just like any regular <mesh>. */}
             <planeGeometry
               args={[argW - windowSubtraction, argH - windowSubtraction]}
             />
@@ -108,6 +102,7 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
   return (
     <>
       <SphereObjects contacts={contacts} />
+
       <TextDetails
         missionText={missionText}
         windowPlaneHeight={windowPlaneHeight}
@@ -117,22 +112,6 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
         screenPlane={screenPlane}
         opacityScreenOffset={opacityScreenOffset}
       />
-
-      {/* removed to stop using reflective material, stuttering */}
-      {/* Screens (opacity screens inside of inner cube frames) */}
-      {/* bottom screen */}
-      {/* {screenPlane(
-        bottomScreenRef,
-        [
-          windowPlaneWidth - windowSubtraction,
-          windowPlaneHeight - windowSubtraction,
-        ],
-        [0, -(windowPlaneHeight / 2) + 0.5, 0],
-        quarterRotation,
-        console.log(""),
-        debugControls.screenOpacity,
-        true
-      )} */}
 
       <mesh
         ref={bottomScreenRef}

@@ -5,6 +5,7 @@ import { Perf } from "r3f-perf";
 import controls from "./debugControls";
 import CubeAndSpheres from "./CubeAndSpheres";
 import { useProgress } from "@react-three/drei";
+import Placeholder from "./Placeholder";
 // import gsap from "gsap";
 // import * as THREE from "three";
 
@@ -108,7 +109,7 @@ export default function Experience({ contacts, perfVisible }) {
         opacity={0.8}
       />
 
-      <Suspense fallback={null}>
+      <Suspense fallback={Placeholder}>
         <CubeAndSpheres
           contacts={contacts}
           orbitRef={orbitRef}

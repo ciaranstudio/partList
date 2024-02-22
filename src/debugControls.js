@@ -8,12 +8,7 @@ export default function debugControls() {
     },
   });
 
-  const {
-    smallestSpin,
-    smallSpin,
-    // biggerSpin,
-    // biggestSpin
-  } = useControls("spin", {
+  const { smallestSpin, smallSpin } = useControls("spin", {
     smallestSpin: {
       value: 0.5,
       step: 0.01,
@@ -26,26 +21,9 @@ export default function debugControls() {
       min: 0,
       max: 4,
     },
-    // biggerSpin: {
-    //   value: 1.0,
-    //   step: 0.01,
-    //   min: 0,
-    //   max: 4,
-    // },
-    // biggestSpin: {
-    //   value: 0.15,
-    //   step: 0.01,
-    //   min: 0,
-    //   max: 4,
-    // },
   });
 
-  const {
-    smallestScale,
-    smallScale,
-    // biggerScale,
-    // biggestScale
-  } = useControls("scale", {
+  const { smallestScale, smallScale } = useControls("scale", {
     smallestScale: {
       value: 1.77,
       step: 0.01,
@@ -58,38 +36,14 @@ export default function debugControls() {
       min: 0,
       max: 10,
     },
-    // biggerScale: {
-    //   value: 2.26,
-    //   step: 0.01,
-    //   min: 0,
-    //   max: 10,
-    // },
-    // biggestScale: {
-    //   value: 2.31,
-    //   step: 0.01,
-    //   min: 0,
-    //   max: 10,
-    // },
   });
 
-  const {
-    smallestColor,
-    smallColor,
-    // biggerColor,
-    // biggestColor
-  } = useControls("color", {
+  const { smallestColor, smallColor } = useControls("color", {
     smallestColor: "#696565",
     smallColor: "#dbd9be",
-    // biggerColor: "#d2dbde",
-    // biggestColor: "#d3dede",
   });
 
-  const {
-    smallestDistortion,
-    smallDistortion,
-    // biggerDistortion,
-    // biggestDistortion,
-  } = useControls("distortion", {
+  const { smallestDistortion, smallDistortion } = useControls("distortion", {
     smallestDistortion: {
       value: 0.56,
       step: 0.01,
@@ -102,26 +56,9 @@ export default function debugControls() {
       min: 0,
       max: 2,
     },
-    // biggerDistortion: {
-    //   value: 0.2,
-    //   step: 0.01,
-    //   min: 0,
-    //   max: 2,
-    // },
-    // biggestDistortion: {
-    //   value: 0.3,
-    //   step: 0.01,
-    //   min: 0,
-    //   max: 2,
-    // },
   });
 
-  const {
-    smallestSpeed,
-    smallSpeed,
-    // biggerSpeed,
-    // biggestSpeed
-  } = useControls("speed", {
+  const { smallestSpeed, smallSpeed } = useControls("speed", {
     smallestSpeed: {
       value: 0.88,
       step: 0.01,
@@ -134,18 +71,6 @@ export default function debugControls() {
       min: 0,
       max: 3,
     },
-    // biggerSpeed: {
-    //   value: 0.0,
-    //   step: 0.01,
-    //   min: 0,
-    //   max: 3,
-    // },
-    // biggestSpeed: {
-    //   value: 0.0,
-    //   step: 0.01,
-    //   min: 0,
-    //   max: 3,
-    // },
   });
 
   const { outerSpheresOpacity, centralSphereOpacity } = useControls("opacity", {
@@ -210,24 +135,14 @@ export default function debugControls() {
     position: position,
     smallestSpin: smallestSpin,
     smallSpin: smallSpin,
-    // biggerSpin: biggerSpin,
-    // biggestSpin: biggestSpin,
     smallestScale: smallestScale,
     smallScale: smallScale,
-    // biggerScale: biggerScale,
-    // biggestScale: biggestScale,
     smallestColor: smallestColor,
     smallColor: smallColor,
-    // biggerColor: biggerColor,
-    // biggestColor: biggestColor,
     smallestDistortion: smallestDistortion,
     smallDistortion: smallDistortion,
-    // biggerDistortion: biggerDistortion,
-    // biggestDistortion: biggestDistortion,
     smallestSpeed: smallestSpeed,
     smallSpeed: smallSpeed,
-    // biggerSpeed: biggerSpeed,
-    // biggestSpeed: biggestSpeed,
     visible: visible,
     wireframe: wireframe,
     floatSpeed: floatSpeed,

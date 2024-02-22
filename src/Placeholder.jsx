@@ -12,7 +12,7 @@ export default function Placeholder(props) {
   return (
     <mesh {...props} ref={ballRef}>
       <sphereGeometry args={[5, 6, 6]} />
-      <meshBasicMaterial wireframe color="lightBlue" />
+      <meshBasicMaterial wireframe color="black" />
     </mesh>
   );
 }

@@ -1,15 +1,8 @@
-// import { extend } from "@react-three/fiber";
-import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-// import { Loader } from "@react-three/drei";
 import { Leva } from "leva";
 import Experience from "../Experience.jsx";
-// import Placeholder from "../Placeholder.jsx";
 import { useLoaderData } from "react-router-dom";
-// import { Loader } from "@react-three/drei";
-// extend({ Loader });
 import { getContacts } from "../contacts";
-// import { authProvider } from "../auth";
 // import { useProgress } from "@react-three/drei";
 // import gsap from "gsap";
 // import * as THREE from "three";
@@ -17,13 +10,11 @@ import { getContacts } from "../contacts";
 export async function loader({ request }) {
   const url = new URL(request.url);
   const contacts = await getContacts();
-  // console.log("contacts: ", contacts);
   return { contacts };
 }
 
 export default function CanvasLayout({ hideDebug, perfVisible }) {
   const { contacts } = useLoaderData();
-
   // const loadingBarElement = document.querySelector(".loading-bar");
   // const { active, progress, errors, item, loaded, total } = useProgress();
   // const overlayOpacity = { value: 1 };
@@ -81,14 +72,8 @@ export default function CanvasLayout({ hideDebug, perfVisible }) {
         }}
         id="three-canvas"
       >
-        <Suspense fallback={null}>
-          {/* <Suspense fallback={<Placeholder />}> */}
-          {/* <Suspense fallback={<Loader />}> */}
-          {/* <mesh geometry={overlayGeometry} material={overlayMaterial}></mesh> */}
-          <Experience contacts={contacts} perfVisible={perfVisible} />
-        </Suspense>
+        <Experience contacts={contacts} perfVisible={perfVisible} />
       </Canvas>
-      {/* <Loader /> */}
     </>
   );
 }

@@ -6,33 +6,16 @@ import {
   useNavigation,
 } from "react-router-dom";
 import { authProvider } from "../auth";
-// import SignIn from "../sign-in/SignIn";
-
 import * as React from "react";
-// import { useEffect } from "react";
-// import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-// import FormControlLabel from "@mui/material/FormControlLabel";
-// import Checkbox from "@mui/material/Checkbox";
-// import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-// import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-
-// import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
-import { Canvas, useLoader } from "@react-three/fiber";
-// import Container from "@mui/material/Container";
-// import PmndrsVan from "../PmndrsVan";
+import { Canvas } from "@react-three/fiber";
 import { OrbitControls, MeshDistortMaterial } from "@react-three/drei";
-// import SphereObjects from "../SphereObjects";
-// import controls from "../debugControls";
-// import CubeAndSpheres from "../CubeAndSpheres";
-// import CanvasLayout from "./canvas";
 
 export async function action({ request }) {
   let formData = await request.formData();
@@ -66,7 +49,6 @@ export async function loader() {
 }
 
 const theme = createTheme({
-  // shadows: ["none"],
   palette: {
     primary: {
       main: "#424242",
@@ -103,7 +85,6 @@ function SignIn() {
   //     password: data.get("password"),
   //   });
   // };
-  // const debugControls = controls();
   let location = useLocation();
   let params = new URLSearchParams(location.search);
   let from = params.get("from") || "/admin";
@@ -142,25 +123,10 @@ function SignIn() {
               <ambientLight />
               <directionalLight intensity={3} />
 
-              {/* <PmndrsVan scale={0.5} position={[0, -2, 0]} /> */}
-              <mesh
-                // ref={smallSphereRef}
-                visible={true}
-                position={[0, 0, 0]}
-                scale={0.75}
-              >
+              <mesh visible={true} position={[0, 0, 0]} scale={0.75}>
                 <sphereGeometry
                   args={[6, 64, 64, 0, Math.PI * 2, 0, Math.PI]}
                 />
-                {/* <meshPhongMaterial
-                  color={debugControls.smallColor}
-                  // side={THREE.DoubleSide}
-                  wireframe={debugControls.wireframe}
-                  opacity={debugControls.spheresOpacity}
-                  transparent
-                  // shininess={50}
-                  // specular="#909090"
-                /> */}
                 <MeshDistortMaterial
                   distort={0.4}
                   speed={0}
