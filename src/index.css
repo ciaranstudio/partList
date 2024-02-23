@@ -119,6 +119,7 @@ code {
   width: min(7.5vw, 7.5vh);
   height: min(7.5vw, 7.5vh);
   animation: spin 2s linear infinite;
+  -webkit-font-smoothing: antialiased;
 }
 
 .loading-bar {
