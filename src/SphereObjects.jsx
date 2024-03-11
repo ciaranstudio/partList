@@ -10,7 +10,7 @@ export default function SphereObjects({ contacts }) {
   const smallSphereRef = useRef();
   const [n, setN] = useState(4);
   const smallestSphereArgs = [
-    n / 1.75,
+    n / 2.5, // n / 1.75,
     n * 8,
     n * 8,
     0,
@@ -18,7 +18,7 @@ export default function SphereObjects({ contacts }) {
     0,
     Math.PI,
   ];
-  const smallSphereArgs = [n / 1.25, n * 2, n * 2, 0, Math.PI * 2, 0, Math.PI];
+  const smallSphereArgs = [n / 1.75, n * 2, n * 2, 0, Math.PI * 2, 0, Math.PI];
   const debugControls = controls();
 
   useFrame((state, delta) => {
