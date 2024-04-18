@@ -56,7 +56,6 @@ export default function Contact() {
           </Typography>
         </Box>
         <Box sx={{ display: "flex", mb: 1, pr: { xs: 0, sm: 1, md: 6 } }}>
-          {" "}
           <Favorite contact={contact} />
           <Form action="edit">
             <Button

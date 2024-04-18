@@ -31,11 +31,9 @@ export async function action({ request }) {
   try {
     await authProvider.signin(email, password).then(() => {
       // console.log("sign in attempted");
-      // console.log("email:", email, " password: ", password);
     });
   } catch (error) {
     // Handle invalid username/password combinations
-    // console.log("log in error from loginAction(): ", error);
   }
   let redirectTo = formData.get("redirectTo");
   return redirect(redirectTo || "/admin");
@@ -75,28 +73,12 @@ const theme = createTheme({
 });
 
 function SignIn() {
-  const n = 8;
-  const smallSphereArgs = [n / 1.25, n * 2, n * 2, 0, Math.PI * 2, 0, Math.PI];
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   console.log({
-  //     email: data.get("email"),
-  //     password: data.get("password"),
-  //   });
-  // };
+  // const smallSphereArgs = [n / 1.25, n * 2, n * 2, 0, Math.PI * 2, 0, Math.PI];
   let location = useLocation();
   let params = new URLSearchParams(location.search);
   let from = params.get("from") || "/admin";
-
   let navigation = useNavigation();
   let isLoggingIn = navigation.formData?.get("email") != null;
-
-  // let actionData = useActionData();
-
-  // useEffect(() => {
-  //   console.log(actionData);
-  // }, [actionData]);
 
   return (
     <ThemeProvider theme={theme}>

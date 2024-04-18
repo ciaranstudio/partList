@@ -114,7 +114,7 @@ code {
 .loader {
   margin-bottom: 100px;
   border: 1px solid #757575;
-  border-top: 0.1rem solid #e0e0e0;
+  border-top: 0.1rem solid #5e5e5e;
   border-radius: 50%;
   width: min(7.5vw, 7.5vh);
   height: min(7.5vw, 7.5vh);

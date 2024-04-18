@@ -1,5 +1,3 @@
-// import localforage from "localforage";
-import { matchSorter } from "match-sorter";
 import sortBy from "sort-by";
 
 import {
@@ -21,36 +19,11 @@ export async function getContacts() {
     // console.log(`${doc.id} => ${doc.data()}`);
     contacts.push({ ...doc.data(), id: doc.id });
   });
-  // await fakeNetwork(`getContacts:${query}`);
-  // let contacts = await localforage.getItem("contacts");
-  // if (!contacts) contacts = [];
-  // if (query) {
-  //   contacts = matchSorter(contacts, query, { keys: ["first", "last"] });
-  // }
   // console.log(contacts);
   return contacts.sort(sortBy("last", "createdAt"));
 }
 
-// export async function getContacts(query) {
-//   const querySnapshot = await getDocs(collection(db, "participants"));
-//   let contacts = [];
-//   querySnapshot.forEach((doc) => {
-//     // console.log(`${doc.id} => ${doc.data()}`);
-//     contacts.push({ ...doc.data(), id: doc.id });
-//   });
-//   // await fakeNetwork(`getContacts:${query}`);
-//   // let contacts = await localforage.getItem("contacts");
-//   // if (!contacts) contacts = [];
-//   if (query) {
-//     contacts = matchSorter(contacts, query, { keys: ["first", "last"] });
-//   }
-//   // console.log(contacts);
-//   return contacts.sort(sortBy("last", "createdAt"));
-// }
-
 export async function createContact() {
-  // await fakeNetwork();
-  // let id = Math.random().toString(36).substring(2, 9);
   let contact;
   let contacts = await getContacts();
 
@@ -72,9 +45,6 @@ export async function createContact() {
 }
 
 export async function getContact(id) {
-  // await fakeNetwork(`contact:${id}`);
-  // let contacts = await localforage.getItem("contacts");
-  // let contact = contacts.find((contact) => contact.id === id);
   let contact;
   const docRef = doc(db, "participants", id);
   const docSnap = await getDoc(docRef);
@@ -97,45 +67,9 @@ export async function updateContact(id, updates) {
   const docRef = doc(db, "participants", id);
   await updateDoc(docRef, updates);
 
-  // await fakeNetwork();
-  // let contacts = await localforage.getItem("contacts");
-  // let contact = contacts.find((contact) => contact.id === id);
-  // if (!contact) throw new Error("No contact found for", id);
-  // Object.assign(contact, updates);
-  // await set(contacts);
   return contact;
 }
 
 export async function deleteContact(id) {
   await deleteDoc(doc(db, "participants", id));
-  // let contacts = await localforage.getItem("contacts");
-  // let index = contacts.findIndex((contact) => contact.id === id);
-  // if (index > -1) {
-  //   contacts.splice(index, 1);
-  //   await set(contacts);
-  //   return true;
-  // }
-  // return false;
 }
-
-// function set(contacts) {
-//   return localforage.setItem("contacts", contacts);
-// }
-
-// fake a cache so we don't slow down stuff we've already seen
-// let fakeCache = {};
-
-// async function fakeNetwork(key) {
-//   if (!key) {
-//     fakeCache = {};
-//   }
-
-//   if (fakeCache[key]) {
-//     return;
-//   }
-
-//   fakeCache[key] = true;
-//   return new Promise((res) => {
-//     setTimeout(res, Math.random() * 800);
-//   });
-// }

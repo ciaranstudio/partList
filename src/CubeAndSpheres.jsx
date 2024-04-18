@@ -72,27 +72,12 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
         onClick={onClick}
       >
         <planeGeometry args={[argW, argH]} />
-        {/* <MeshReflectorMaterial
-          resolution={512}
-          blur={[500, 500]}
-          mixBlur={0.5}
-          mirror={1}
-          color={debugControls.screenColor}
-          opacity={opacity}
-          transparent
-          visible={visible}
-          wireframe={wireframe}
-          // side={THREE.DoubleSide}
-        /> */}
         <meshPhongMaterial
           color={debugControls.screenColor}
-          // side={THREE.DoubleSide}
           opacity={opacity}
           transparent
           visible={visible}
           wireframe={wireframe}
-          // shininess={50}
-          // specular="#909090"
           depthTest={true}
         />
       </mesh>
@@ -133,7 +118,6 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
           visible={true}
           wireframe={false}
           depthTest={false}
-          // side={THREE.DoubleSide}
         />
       </mesh>
 

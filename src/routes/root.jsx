@@ -6,9 +6,7 @@ import {
   useLoaderData,
   Form,
   redirect,
-  // useNavigation,
   useNavigate,
-  // useSubmit,
 } from "react-router-dom";
 import { getContacts, createContact } from "../contacts";
 import { authProvider } from "../auth";
@@ -122,16 +120,11 @@ export default function Root() {
     setOpen(true);
     setOpenNestedList(!openNestedList);
   };
-
   const { contacts } = useLoaderData();
-  // const navigation = useNavigation();
   const navigate = useNavigate();
-  // const submit = useSubmit();
-  // document.body.style.backgroundColor = "rgb(235, 235, 235)";
   const [selectedIndex, setSelectedIndex] = useState(null);
-
   const [value, setValue] = useState(contacts[0]);
-  const [inputValue, setInputValue] = React.useState("");
+  const [inputValue, setInputValue] = useState("");
   const loading = value && contacts.length === 0;
 
   const handleListItemClick = (id) => {

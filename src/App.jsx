@@ -33,16 +33,12 @@ import CanvasLayout, { loader as canvasLoader } from "./routes/canvas";
 const router = createBrowserRouter([
   {
     path: "/",
-    // action: experienceAction,
-    // loader: experienceLoader,
     element: <CanvasLayout hideDebug={true} perfVisible={false} />,
     errorElement: <ErrorPage />,
     loader: canvasLoader,
   },
   {
     path: "/debug",
-    // action: experienceAction,
-    // loader: experienceLoader,
     element: <CanvasLayout hideDebug={false} perfVisible={true} />,
     errorElement: <ErrorPage />,
     loader: canvasLoader,
@@ -84,7 +80,6 @@ const router = createBrowserRouter([
   {
     path: "/logout",
     async action() {
-      // Signout in a "resource route" that we can hit from a fetcher.Form
       await authProvider.signout();
       return redirect("/");
     },
