@@ -5,9 +5,6 @@ import { Perf } from "r3f-perf";
 import controls from "./debugControls";
 import CubeAndSpheres from "./CubeAndSpheres";
 // import { useProgress } from "@react-three/drei";
-import Placeholder from "./Placeholder";
-// import gsap from "gsap";
-// import * as THREE from "three";
 
 export default function Experience({ contacts, perfVisible }) {
   // const loadingBarElement = document.querySelector(".loading-bar");
@@ -25,7 +22,6 @@ export default function Experience({ contacts, perfVisible }) {
 
   const orbitRef = useRef();
   const debugControls = controls();
-  debugControls.perfVisible = perfVisible;
 
   useEffect(() => {
     if (orbitRef.current) {

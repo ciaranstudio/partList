@@ -28,18 +28,23 @@ import LoginPage, {
   action as loginAction,
 } from "./routes/login";
 import CanvasLayout, { loader as canvasLoader } from "./routes/canvas";
+import debugControls from "./debugControls";
 // import Placeholder from "./Placeholder.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <CanvasLayout hideDebug={true} perfVisible={false} />,
+    element: (
+      <CanvasLayout hideDebug={true} perfVisible={debugControls.perfVisible} />
+    ),
     errorElement: <ErrorPage />,
     loader: canvasLoader,
   },
   {
     path: "/debug",
-    element: <CanvasLayout hideDebug={false} perfVisible={true} />,
+    element: (
+      <CanvasLayout hideDebug={false} perfVisible={debugControls.perfVisible} />
+    ),
     errorElement: <ErrorPage />,
     loader: canvasLoader,
   },

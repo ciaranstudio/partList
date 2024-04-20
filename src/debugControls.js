@@ -1,4 +1,4 @@
-import { useControls, button } from "leva";
+import { useControls } from "leva";
 
 export default function debugControls() {
   const { position } = useControls("position", {
@@ -127,9 +127,9 @@ export default function debugControls() {
     textColor: "#3a3a3b",
   });
 
-  // const { perfVisible } = useControls("performance", {
-  //   perfVisible: false,
-  // });
+  const { perfVisible } = useControls("performance", {
+    perfVisible: false,
+  });
 
   const controls = {
     position: position,
@@ -154,7 +154,7 @@ export default function debugControls() {
     screenOpacity: screenOpacity,
     screenColor: screenColor,
     textColor: textColor,
-    // perfVisible: perfVisible,
+    perfVisible: perfVisible,
   };
   return controls;
 }
