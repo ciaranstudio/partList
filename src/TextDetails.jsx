@@ -227,6 +227,7 @@ export default function TextDetails({
         ],
         [0, 0.5, windowPlaneHeight / 2 - opacityScreenOffset - 0.125],
         0,
+        console.log("contacts.length", contacts.length),
         debugControls.screenOpacity,
         true,
         false,
