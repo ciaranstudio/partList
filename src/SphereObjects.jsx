@@ -10,7 +10,7 @@ export default function SphereObjects({ contacts }) {
   const smallSphereRef = useRef();
   const [n, setN] = useState(4);
   const smallestSphereArgs = [
-    n / 2.5, // n / 1.75,
+    n / 1.75, // 2.5 //  n / 1.75,
     n * 8,
     n * 8,
     0,
