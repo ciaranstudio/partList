@@ -2,15 +2,15 @@ import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 
 export default function Placeholder(props) {
-  const ballRef = useRef();
+  const sphereRef = useRef();
 
   useFrame((state, delta) => {
     const angle = state.clock.elapsedTime;
-    ballRef.current.rotation.y = angle;
+    sphereRef.current.rotation.y = angle;
   });
 
   return (
-    <mesh {...props} ref={ballRef}>
+    <mesh {...props} ref={sphereRef}>
       <sphereGeometry args={[5, 6, 6]} />
       <meshBasicMaterial wireframe color="black" />
     </mesh>

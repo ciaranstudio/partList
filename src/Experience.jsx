@@ -34,6 +34,25 @@ export default function Experience({ contacts, perfVisible }) {
     }
   }, []);
 
+  useEffect(() => {
+    // prevent swipe back navigation gesture on iOS mobile devices
+    const element = document.querySelector("canvas");
+    element.addEventListener("touchstart", (e) => {
+      setIsTouching(true);
+      // is not near edge of view, exit
+      if (e.pageX > 20 && e.pageX < window.innerWidth - 20) return;
+      // prevent swipe to navigate gesture
+      e.preventDefault();
+    });
+
+    return () => {
+      element.removeEventListener("touchstart", (e) => {
+        // prevent swipe to navigate gesture
+        console.log("removed event listener, 'touchstart'");
+      });
+    };
+  }, []);
+
   return (
     <>
       <color args={["#e8e8e8"]} attach="background" />
@@ -62,7 +81,7 @@ export default function Experience({ contacts, perfVisible }) {
         speed={0.0015}
         opacity={0.8}
       />
-      <Suspense fallback={Placeholder}>
+      <Suspense fallback={null}>
         <CubeAndSpheres contacts={contacts} orbitRef={orbitRef} />
       </Suspense>
     </>
