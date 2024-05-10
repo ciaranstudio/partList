@@ -15,7 +15,7 @@ export default function CanvasLayout({ hideDebug, perfVisible }) {
 
   return (
     <>
-      <Leva hidden={hideDebug} oneLineLabels />
+      <Leva hidden={hideDebug} collapsed oneLineLabels />
       <Canvas
         camera={{
           fov: 45,
