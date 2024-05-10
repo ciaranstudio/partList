@@ -1,10 +1,4 @@
-import {
-  Form,
-  redirect,
-  // useActionData,
-  useLocation,
-  useNavigation,
-} from "react-router-dom";
+import { Form, redirect, useLocation, useNavigation } from "react-router-dom";
 import { authProvider } from "../auth";
 import * as React from "react";
 import Button from "@mui/material/Button";
@@ -57,23 +51,9 @@ const theme = createTheme({
       light: "#E0E0E0",
     },
   },
-  // components: {
-  //   MuiSelect: {
-  //     styleOverrides: {
-  //       standard: {
-  //         backgroundColor: "#e8e8e8",
-  //         color: "#757575",
-  //         "&:hover": {
-  //           color: "#424242",
-  //         },
-  //       },
-  //     },
-  //   },
-  // },
 });
 
 function SignIn() {
-  // const smallSphereArgs = [n / 1.25, n * 2, n * 2, 0, Math.PI * 2, 0, Math.PI];
   let location = useLocation();
   let params = new URLSearchParams(location.search);
   let from = params.get("from") || "/admin";
@@ -118,15 +98,7 @@ function SignIn() {
                 />
               </mesh>
             </Canvas>
-            {/* <Typography component="h1" variant="h5" textAlign={"center"}>
-              Sign in
-            </Typography> */}
-            <Box
-              // component="form"
-              // onSubmit={handleSubmit}
-              // noValidate
-              sx={{ mt: 0 }}
-            >
+            <Box sx={{ mt: 0 }}>
               <Form method="post" replace>
                 <input type="hidden" name="redirectTo" value={from} />
 
@@ -154,10 +126,6 @@ function SignIn() {
                   size="small"
                   color="primary"
                 />
-                {/* <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              /> */}
 
                 <Button
                   type="submit"
@@ -169,29 +137,10 @@ function SignIn() {
                 >
                   {isLoggingIn ? "Logging in..." : "Login"}
                 </Button>
-                {/* <Typography> */}
-                {/* {actionData && actionData.error ? (
-                  <p style={{ color: "red" }}>{actionData.error}</p>
-                ) : null} */}
-                {/* </Typography> */}
               </Form>
-
-              {/* <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid> */}
             </Box>
           </Grid>
         </Grid>
-        {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
       </Container>
     </ThemeProvider>
   );

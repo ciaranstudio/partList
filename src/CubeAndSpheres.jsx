@@ -136,7 +136,7 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
         0,
       )}
 
-      {/* front and back */}
+      {/* Front and back */}
       {windowPlane(
         true,
         [windowPlaneWidth, windowPlaneHeight],
@@ -152,7 +152,7 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
         0,
       )}
 
-      {/* sides */}
+      {/* Sides */}
       {windowPlane(
         true,
         [windowPlaneHeight, windowPlaneHeight],
@@ -169,7 +169,7 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
       )}
 
       {/* Outer cube box */}
-      {/* top and bottom */}
+      {/* Top and bottom */}
       {windowPlane(
         false,
         [windowPlaneWidth + outerCubePlus, windowPlaneHeight + outerCubePlus],
@@ -185,7 +185,7 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
         0,
       )}
 
-      {/* front and back */}
+      {/* Front and back */}
       {windowPlane(
         false,
         [windowPlaneWidth + outerCubePlus, windowPlaneHeight + outerCubePlus],
@@ -201,7 +201,7 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
         0,
       )}
 
-      {/* sides */}
+      {/* Sides */}
       {windowPlane(
         false,
         [windowPlaneHeight + outerCubePlus, windowPlaneHeight + outerCubePlus],

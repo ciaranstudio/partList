@@ -4,22 +4,8 @@ import { Cloud, Sky, OrbitControls } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 import controls from "./debugControls";
 import CubeAndSpheres from "./CubeAndSpheres";
-// import { useProgress } from "@react-three/drei";
 
 export default function Experience({ contacts, perfVisible }) {
-  // const loadingBarElement = document.querySelector(".loading-bar");
-  // const { active, progress, errors, item, loaded, total } = useProgress();
-
-  // useEffect(() => {
-  //   loadingBarElement.style.transform = `scaleX(${progress / 100})`;
-  //   if (progress == 100) {
-  //     window.setTimeout(() => {
-  //       loadingBarElement.classList.add("ended");
-  //       loadingBarElement.style.transform = "";
-  //     }, 500);
-  //   }
-  // }, [progress]);
-
   const orbitRef = useRef();
   const debugControls = controls();
 

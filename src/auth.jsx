@@ -16,7 +16,7 @@ export const authProvider = {
       })
       .catch((error) => {
         // An error happened.
-        // console.log(error);
+        console.log(error);
       });
   },
   async signin(email, password) {
@@ -24,18 +24,12 @@ export const authProvider = {
       .then((userCredential) => {
         // Signed in
         this.user = userCredential.user;
-        // console.log("log inside of signIn function (this.user): ", this.user);
         this.isAuthenticated = true;
       })
       .catch((error) => {
-        // console.log("Error from catch of firebase sign in method: ", error);
         const errorCode = error.code;
         const errorMessage = error.message;
         this.signout();
       });
-    // this.actionCodeSettings = {
-    //   url: "https://partlist-e9fc0.web.app",
-    //   handleCodeInApp: true,
-    // };
   },
 };

@@ -15,7 +15,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background: #171717; */
 }
 
 #three-canvas {
@@ -29,7 +28,6 @@ code {
 
 /* styling for r3f experience html element (artist info list/window) */
 .label > div {
-  /* font-family: Helvetica, Arial; */
   position: absolute;
   background: transparent;
   color: #575806;
@@ -100,13 +98,10 @@ code {
 
 #initialLoad {
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
-  /* padding: 10% 10%; */
   width: 100%;
   height: 100%;
-  /* margin: auto; */
   color: #3992ff;
   cursor: wait;
 }
@@ -121,20 +116,3 @@ code {
   animation: spin 2s linear infinite;
   -webkit-font-smoothing: antialiased;
 }
-
-/* .loading-bar {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  height: 1px;
-  background: #e0e0e0;
-  transform: scaleX(0);
-  transform-origin: top left;
-  transition: transform 1s;
-}
-
-.loading-bar.ended {
-  transform: scaleX(0);
-  transform-origin: 100% 0;
-  transition: transform 1.5s ease-in-out;
-} */

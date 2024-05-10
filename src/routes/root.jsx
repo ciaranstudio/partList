@@ -253,24 +253,9 @@ export default function Root() {
                   },
                 }}
               />
-              {/* <IconButton
-                edge="start"
-                color="inherit"
-                aria-label="open drawer"
-                onClick={toggleDrawer}
-                sx={{
-                  ...(open && { display: "none" }),
-                }}
-              >
-                <AuthStatus />
-              </IconButton> */}
             </Toolbar>
           </AppBar>
-          <Drawer
-            variant="permanent"
-            open={open}
-            // ModalProps={{ disableScrollLock: true }}
-          >
+          <Drawer variant="permanent" open={open}>
             <Toolbar
               sx={{
                 display: "flex",

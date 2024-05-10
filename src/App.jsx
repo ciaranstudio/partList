@@ -5,17 +5,12 @@ import {
   redirect,
 } from "react-router-dom";
 import { authProvider } from "./auth";
-// JSX alternative for configuring routes:
-// import {
-//   createRoutesFromElements,
-//   Route,
-// } from "react-router-dom";
 import "./index.css";
 import Root, {
   loader as rootLoader,
   action as rootAction,
 } from "./routes/root";
-import ErrorPage from "./error-page";
+import ErrorPage from "./errorPage";
 import Contact, {
   loader as contactLoader,
   action as contactAction,
@@ -29,7 +24,6 @@ import LoginPage, {
 } from "./routes/login";
 import CanvasLayout, { loader as canvasLoader } from "./routes/canvas";
 import debugControls from "./debugControls";
-// import Placeholder from "./Placeholder.jsx";
 
 const router = createBrowserRouter([
   {
@@ -72,7 +66,6 @@ const router = createBrowserRouter([
       {
         path: "contacts/:contactId/destroy",
         action: destroyAction,
-        // errorElement: <div>Oops! There was an error.</div>,
       },
     ],
   },
@@ -105,36 +98,3 @@ export default function App() {
     </>
   );
 }
-
-// JSX alternative for configuring routes example:
-// const router = createBrowserRouter(
-//   createRoutesFromElements(
-//     <Route
-//       path="/"
-//       element={<Root />}
-//       loader={rootLoader}
-//       action={rootAction}
-//       errorElement={<ErrorPage />}
-//     >
-//       <Route errorElement={<ErrorPage />}>
-//         <Route index element={<Index />} />
-//         <Route
-//           path="contacts/:contactId"
-//           element={<Contact />}
-//           loader={contactLoader}
-//           action={contactAction}
-//         />
-//         <Route
-//           path="contacts/:contactId/edit"
-//           element={<EditContact />}
-//           loader={contactLoader}
-//           action={editAction}
-//         />
-//         <Route
-//           path="contacts/:contactId/destroy"
-//           action={destroyAction}
-//         />
-//       </Route>
-//     </Route>
-//   )
-// );
