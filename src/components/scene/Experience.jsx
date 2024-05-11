@@ -6,9 +6,13 @@ import controls from "../../data/debugControls";
 import CubeAndSpheres from "./CubeAndSpheres";
 
 export default function Experience({ contacts, perfVisible }) {
+  // useRef
   const orbitRef = useRef();
+
+  // leva debug panel controls
   const debugControls = controls();
 
+  // useEffect
   useEffect(() => {
     if (orbitRef.current) {
       orbitRef.current.autoRotateSpeed = 0.5;

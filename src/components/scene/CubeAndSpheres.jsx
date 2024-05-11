@@ -3,22 +3,18 @@ import { useRef } from "react";
 import * as THREE from "three";
 import { Geometry, Base, Subtraction } from "@react-three/csg";
 import controls from "../../data/debugControls";
-import { missionText } from "../../data/missionText";
 import SphereObjects from "./SphereObjects";
 import TextDetails from "./TextDetails";
+import { CUBE_FRAME } from "../../data/constants";
 
 export default function CubeAndSpheres({ contacts, orbitRef }) {
-  const debugControls = controls();
-
+  // useRef
   const bottomScreenRef = useRef();
 
-  const windowPlaneHeight = 15.35;
-  const windowPlaneWidth = 14;
-  const windowSubtraction = 0.05;
-  const outerCubePlus = 0.25;
-  const opacityScreenOffset = 0.05;
-  const quarterRotation = -Math.PI * 0.5;
+  // leva debug panel controls
+  const debugControls = controls();
 
+  // functions for cube surfaces / line frames
   const windowPlane = (
     inner,
     [argW, argH],
@@ -46,7 +42,10 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
           </Base>
           <Subtraction>
             <planeGeometry
-              args={[argW - windowSubtraction, argH - windowSubtraction]}
+              args={[
+                argW - CUBE_FRAME.windowSubtraction,
+                argH - CUBE_FRAME.windowSubtraction,
+              ]}
             />
           </Subtraction>
         </Geometry>
@@ -87,26 +86,19 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
   return (
     <>
       <SphereObjects contacts={contacts} />
+      <TextDetails contacts={contacts} screenPlane={screenPlane} />
 
-      <TextDetails
-        missionText={missionText}
-        windowPlaneHeight={windowPlaneHeight}
-        windowPlaneWidth={windowPlaneWidth}
-        windowSubtraction={windowSubtraction}
-        contacts={contacts}
-        screenPlane={screenPlane}
-        opacityScreenOffset={opacityScreenOffset}
-      />
-
+      {/* Inner cube box */}
+      {/* Top and bottom */}
       <mesh
         ref={bottomScreenRef}
-        position={[0, -(windowPlaneHeight / 2) + 0.5, 0]}
-        rotation-x={quarterRotation}
+        position={[0, -(CUBE_FRAME.windowPlaneHeight / 2) + 0.5, 0]}
+        rotation-x={CUBE_FRAME.quarterRotation}
       >
         <planeGeometry
           args={[
-            windowPlaneWidth - windowSubtraction,
-            windowPlaneHeight - windowSubtraction,
+            CUBE_FRAME.windowPlaneWidth - CUBE_FRAME.windowSubtraction,
+            CUBE_FRAME.windowPlaneHeight - CUBE_FRAME.windowSubtraction,
           ]}
         />
         <meshPhongMaterial
@@ -123,31 +115,31 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
 
       {windowPlane(
         true,
-        [windowPlaneWidth, windowPlaneHeight],
-        [0, -(windowPlaneHeight / 2) + 0.5, 0],
-        quarterRotation,
+        [CUBE_FRAME.windowPlaneWidth, CUBE_FRAME.windowPlaneHeight],
+        [0, -(CUBE_FRAME.windowPlaneHeight / 2) + 0.5, 0],
+        CUBE_FRAME.quarterRotation,
         0,
       )}
       {windowPlane(
         true,
-        [windowPlaneWidth, windowPlaneHeight],
-        [0, windowPlaneHeight / 2 + 0.5, 0],
-        quarterRotation,
+        [CUBE_FRAME.windowPlaneWidth, CUBE_FRAME.windowPlaneHeight],
+        [0, CUBE_FRAME.windowPlaneHeight / 2 + 0.5, 0],
+        CUBE_FRAME.quarterRotation,
         0,
       )}
 
       {/* Front and back */}
       {windowPlane(
         true,
-        [windowPlaneWidth, windowPlaneHeight],
-        [0, 0.5, windowPlaneHeight / 2],
+        [CUBE_FRAME.windowPlaneWidth, CUBE_FRAME.windowPlaneHeight],
+        [0, 0.5, CUBE_FRAME.windowPlaneHeight / 2],
         0,
         0,
       )}
       {windowPlane(
         true,
-        [windowPlaneWidth, windowPlaneHeight],
-        [0, 0.5, -windowPlaneHeight / 2],
+        [CUBE_FRAME.windowPlaneWidth, CUBE_FRAME.windowPlaneHeight],
+        [0, 0.5, -CUBE_FRAME.windowPlaneHeight / 2],
         0,
         0,
       )}
@@ -155,48 +147,73 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
       {/* Sides */}
       {windowPlane(
         true,
-        [windowPlaneHeight, windowPlaneHeight],
-        [windowPlaneWidth / 2, 0.5, 0],
+        [CUBE_FRAME.windowPlaneHeight, CUBE_FRAME.windowPlaneHeight],
+        [CUBE_FRAME.windowPlaneWidth / 2, 0.5, 0],
         0,
-        quarterRotation,
+        CUBE_FRAME.quarterRotation,
       )}
       {windowPlane(
         true,
-        [windowPlaneHeight, windowPlaneHeight],
-        [-windowPlaneWidth / 2, 0.5, 0],
+        [CUBE_FRAME.windowPlaneHeight, CUBE_FRAME.windowPlaneHeight],
+        [-CUBE_FRAME.windowPlaneWidth / 2, 0.5, 0],
         0,
-        quarterRotation,
+        CUBE_FRAME.quarterRotation,
       )}
 
       {/* Outer cube box */}
       {/* Top and bottom */}
       {windowPlane(
         false,
-        [windowPlaneWidth + outerCubePlus, windowPlaneHeight + outerCubePlus],
-        [0, -((windowPlaneHeight + outerCubePlus) / 2) + 0.5, 0],
-        quarterRotation,
+        [
+          CUBE_FRAME.windowPlaneWidth + CUBE_FRAME.outerCubePlus,
+          CUBE_FRAME.windowPlaneHeight + CUBE_FRAME.outerCubePlus,
+        ],
+        [
+          0,
+          -((CUBE_FRAME.windowPlaneHeight + CUBE_FRAME.outerCubePlus) / 2) +
+            0.5,
+          0,
+        ],
+        CUBE_FRAME.quarterRotation,
         0,
       )}
       {windowPlane(
         false,
-        [windowPlaneWidth + outerCubePlus, windowPlaneHeight + outerCubePlus],
-        [0, (windowPlaneHeight + outerCubePlus) / 2 + 0.5, 0],
-        quarterRotation,
+        [
+          CUBE_FRAME.windowPlaneWidth + CUBE_FRAME.outerCubePlus,
+          CUBE_FRAME.windowPlaneHeight + CUBE_FRAME.outerCubePlus,
+        ],
+        [
+          0,
+          (CUBE_FRAME.windowPlaneHeight + CUBE_FRAME.outerCubePlus) / 2 + 0.5,
+          0,
+        ],
+        CUBE_FRAME.quarterRotation,
         0,
       )}
 
       {/* Front and back */}
       {windowPlane(
         false,
-        [windowPlaneWidth + outerCubePlus, windowPlaneHeight + outerCubePlus],
-        [0, 0.5, (windowPlaneHeight + outerCubePlus) / 2],
+        [
+          CUBE_FRAME.windowPlaneWidth + CUBE_FRAME.outerCubePlus,
+          CUBE_FRAME.windowPlaneHeight + CUBE_FRAME.outerCubePlus,
+        ],
+        [0, 0.5, (CUBE_FRAME.windowPlaneHeight + CUBE_FRAME.outerCubePlus) / 2],
         0,
         0,
       )}
       {windowPlane(
         false,
-        [windowPlaneWidth + outerCubePlus, windowPlaneHeight + outerCubePlus],
-        [0, 0.5, -(windowPlaneHeight + outerCubePlus) / 2],
+        [
+          CUBE_FRAME.windowPlaneWidth + CUBE_FRAME.outerCubePlus,
+          CUBE_FRAME.windowPlaneHeight + CUBE_FRAME.outerCubePlus,
+        ],
+        [
+          0,
+          0.5,
+          -(CUBE_FRAME.windowPlaneHeight + CUBE_FRAME.outerCubePlus) / 2,
+        ],
         0,
         0,
       )}
@@ -204,17 +221,23 @@ export default function CubeAndSpheres({ contacts, orbitRef }) {
       {/* Sides */}
       {windowPlane(
         false,
-        [windowPlaneHeight + outerCubePlus, windowPlaneHeight + outerCubePlus],
-        [(windowPlaneWidth + outerCubePlus) / 2, 0.5, 0],
+        [
+          CUBE_FRAME.windowPlaneHeight + CUBE_FRAME.outerCubePlus,
+          CUBE_FRAME.windowPlaneHeight + CUBE_FRAME.outerCubePlus,
+        ],
+        [(CUBE_FRAME.windowPlaneWidth + CUBE_FRAME.outerCubePlus) / 2, 0.5, 0],
         0,
-        quarterRotation,
+        CUBE_FRAME.quarterRotation,
       )}
       {windowPlane(
         false,
-        [windowPlaneHeight + outerCubePlus, windowPlaneHeight + outerCubePlus],
-        [-(windowPlaneWidth + outerCubePlus) / 2, 0.5, 0],
+        [
+          CUBE_FRAME.windowPlaneHeight + CUBE_FRAME.outerCubePlus,
+          CUBE_FRAME.windowPlaneHeight + CUBE_FRAME.outerCubePlus,
+        ],
+        [-(CUBE_FRAME.windowPlaneWidth + CUBE_FRAME.outerCubePlus) / 2, 0.5, 0],
         0,
-        quarterRotation,
+        CUBE_FRAME.quarterRotation,
       )}
     </>
   );

@@ -4,19 +4,17 @@ import * as THREE from "three";
 import { Geometry, Base, Subtraction } from "@react-three/csg";
 import { Edges, Text, Text3D } from "@react-three/drei";
 import controls from "../../data/debugControls";
+import { INFO_ICON, CUBE_FRAME } from "../../data/constants";
+import { missionText } from "../../data/missionText";
 
-export default function TextDetails({
-  contacts,
-  missionText,
-  windowPlaneHeight,
-  windowPlaneWidth,
-  windowSubtraction,
-  screenPlane,
-  opacityScreenOffset,
-}) {
+export default function TextDetails({ contacts, screenPlane }) {
+  // useState
   const [clickToggle, setClickToggle] = useState(true);
-  const [clickedArtistId, setClickedArtistId] = useState(null);
-  const [clickedArtistTextObject, setClickedArtistTextObject] = useState(null);
+  const [_clickedArtistId, setClickedArtistId] = useState(null);
+  const [_clickedArtistTextObject, setClickedArtistTextObject] = useState(null);
+  const [n, setN] = useState(4);
+
+  // useRef
   const artistsRef = useRef([contacts]);
   const bioTextGroupRef = useRef();
   const listPlanesRef = useRef(contacts.map(() => createRef()));
@@ -27,17 +25,22 @@ export default function TextDetails({
   const infoLetterRef = useRef();
   const mainTextRef = useRef();
   const mainTextFrameRef = useRef();
+
+  // leva debug panel controls
   const debugControls = controls();
-  const [n, setN] = useState(4);
+
+  // useEffect
   useEffect(() => {
     setN(contacts.length);
   }, []);
-  const infoSpherePosition = [6.05, -6.2, 7.71];
 
+  // functions
+  // click handler for icon "i" button on main cube plane (face)
   const iconClick = () => {
     setClickToggle(!clickToggle);
   };
 
+  // hover handlers
   const hoveredInfoSphere = () => {
     document.getElementById("three-canvas").style.cursor = "pointer";
   };
@@ -54,10 +57,15 @@ export default function TextDetails({
     document.getElementById("three-canvas").style.cursor = "grab";
   };
 
+  // frame around main text display
   const mainTextFrame = (customScreenOffset) => {
     return (
       <mesh
-        position={[0, 0.5, windowPlaneHeight / 2 - customScreenOffset]}
+        position={[
+          0,
+          0.5,
+          CUBE_FRAME.windowPlaneHeight / 2 - customScreenOffset,
+        ]}
         rotation-x={0}
       >
         <meshPhongMaterial
@@ -69,8 +77,8 @@ export default function TextDetails({
         />
         <planeGeometry
           args={[
-            windowPlaneWidth - windowSubtraction,
-            windowPlaneHeight - windowSubtraction,
+            CUBE_FRAME.windowPlaneWidth - CUBE_FRAME.windowSubtraction,
+            CUBE_FRAME.windowPlaneHeight - CUBE_FRAME.windowSubtraction,
           ]}
         />
 
@@ -78,16 +86,16 @@ export default function TextDetails({
           <Base>
             <planeGeometry
               args={[
-                windowPlaneWidth - windowSubtraction,
-                windowPlaneHeight - windowSubtraction,
+                CUBE_FRAME.windowPlaneWidth - CUBE_FRAME.windowSubtraction,
+                CUBE_FRAME.windowPlaneHeight - CUBE_FRAME.windowSubtraction,
               ]}
             />
           </Base>
           <Subtraction>
             <planeGeometry
               args={[
-                windowPlaneWidth - windowSubtraction - 1,
-                windowPlaneHeight - windowSubtraction - 1,
+                CUBE_FRAME.windowPlaneWidth - CUBE_FRAME.windowSubtraction - 1,
+                CUBE_FRAME.windowPlaneHeight - CUBE_FRAME.windowSubtraction - 1,
               ]}
             />
           </Subtraction>
@@ -96,6 +104,7 @@ export default function TextDetails({
     );
   };
 
+  // useEffect
   useEffect(() => {
     listGroupRef.current.visible = false;
   }, []);
@@ -140,7 +149,7 @@ export default function TextDetails({
               font="./noto-sans-v35-latin-regular.woff"
               fontSize={0.28}
               color={debugControls.textColor}
-              position={[0, 0.5, windowPlaneHeight / 2 + idx / 50]}
+              position={[0, 0.5, CUBE_FRAME.windowPlaneHeight / 2 + idx / 50]}
               maxWidth={10.3}
               textAlign="left"
               ref={listBiosRef.current[idx]}
@@ -159,7 +168,11 @@ export default function TextDetails({
               font="./noto-sans-v35-latin-regular.woff"
               fontSize={0.36}
               color={debugControls.textColor}
-              position={[-11.4, 6.625 - idx, windowPlaneHeight / 2 - 0.125]}
+              position={[
+                -11.4,
+                6.625 - idx,
+                CUBE_FRAME.windowPlaneHeight / 2 - 0.125,
+              ]}
               maxWidth={12.3}
               textAlign="left"
               anchorX="left"
@@ -168,7 +181,11 @@ export default function TextDetails({
               {`${contact.first} ${contact.last}`}
             </Text>
             <mesh
-              position={[-9.5, 6.625 - idx, windowPlaneHeight / 2 - 0.135]}
+              position={[
+                -9.5,
+                6.625 - idx,
+                CUBE_FRAME.windowPlaneHeight / 2 - 0.135,
+              ]}
               rotation-x={0}
               ref={artistsRef[idx]}
               onPointerDown={() => {
@@ -203,14 +220,14 @@ export default function TextDetails({
         ))}
       </group>
 
-      {mainTextFrame(opacityScreenOffset)}
+      {mainTextFrame(CUBE_FRAME.opacityScreenOffset)}
 
       {/* main text (project mission description) */}
       <Text
         font="./noto-sans-v35-latin-regular.woff"
         fontSize={0.2985}
         color={debugControls.textColor}
-        position={[0, 0.5, windowPlaneHeight / 2 - 0.125]}
+        position={[0, 0.5, CUBE_FRAME.windowPlaneHeight / 2 - 0.125]}
         maxWidth={10.3}
         textAlign="left"
         ref={mainTextRef}
@@ -222,10 +239,16 @@ export default function TextDetails({
       {screenPlane(
         frontScreenRef,
         [
-          windowPlaneWidth - windowSubtraction,
-          windowPlaneHeight - windowSubtraction,
+          CUBE_FRAME.windowPlaneWidth - CUBE_FRAME.windowSubtraction,
+          CUBE_FRAME.windowPlaneHeight - CUBE_FRAME.windowSubtraction,
         ],
-        [0, 0.5, windowPlaneHeight / 2 - opacityScreenOffset - 0.125],
+        [
+          0,
+          0.5,
+          CUBE_FRAME.windowPlaneHeight / 2 -
+            CUBE_FRAME.opacityScreenOffset -
+            0.125,
+        ],
         0,
         console.log("contacts.length", contacts.length),
         debugControls.screenOpacity,
@@ -240,8 +263,8 @@ export default function TextDetails({
       >
         {screenPlane(
           frontScreenRef,
-          [windowPlaneWidth / 4, windowPlaneHeight / 4],
-          infoSpherePosition,
+          [CUBE_FRAME.windowPlaneWidth / 4, CUBE_FRAME.windowPlaneHeight / 4],
+          INFO_ICON.infoSpherePosition,
           0,
           iconClick,
           0,

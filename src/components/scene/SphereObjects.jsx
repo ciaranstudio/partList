@@ -6,9 +6,17 @@ import { Float, MeshDistortMaterial } from "@react-three/drei";
 import controls from "../../data/debugControls";
 
 export default function SphereObjects({ contacts }) {
+  // useRef
   const smallestSphereRef = useRef();
   const smallSphereRef = useRef();
+
+  // useState
   const [n, setN] = useState(4);
+
+  // leva debug panel controls
+  const debugControls = controls();
+
+  // constants
   const smallestSphereArgs = [
     n / 1.75, // 2.5 //  n / 1.75,
     n * 8,
@@ -19,18 +27,20 @@ export default function SphereObjects({ contacts }) {
     Math.PI,
   ];
   const smallSphereArgs = [n / 1.75, n * 2, n * 2, 0, Math.PI * 2, 0, Math.PI];
-  const debugControls = controls();
 
+  // useFrame
   useFrame((state, delta) => {
     const angle = state.clock.elapsedTime / 6;
     smallestSphereRef.current.rotation.y = angle * debugControls.smallestSpin;
     smallSphereRef.current.rotation.y = angle * debugControls.smallSpin;
   });
 
+  // useEffect
   useEffect(() => {
     setN(contacts.length);
   }, []);
 
+  // function for sphere (main/smallest) object
   const sphereMain = () => {
     return (
       <mesh
@@ -64,7 +74,9 @@ export default function SphereObjects({ contacts }) {
         speed={debugControls.floatSpeed}
         floatIntensity={debugControls.floatIntensity}
       >
+        {/* smallest sphere / central / main sphere */}
         {sphereMain()}
+        {/* outer sphere slightly larger than central/smallest sphere */}
         <mesh
           ref={smallSphereRef}
           visible={debugControls.visible}

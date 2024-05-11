@@ -15,17 +15,15 @@ export async function action({ request }) {
   let formData = await request.formData();
   let email = formData.get("email");
   let password = formData.get("password");
-  // Validate form inputs and return validation errors via useActionData()
+  // Validate form inputs and return validation errors
   if (!email || !password) {
     return {
       error: "You must provide an credentials to log in",
     };
   }
-  // Sign in and redirect to the proper destination if successful.
+  // Sign in and redirect to the proper destination if successful
   try {
-    await authProvider.signin(email, password).then(() => {
-      // console.log("sign in attempted");
-    });
+    await authProvider.signin(email, password).then(() => {});
   } catch (error) {
     // Handle invalid username/password combinations
   }

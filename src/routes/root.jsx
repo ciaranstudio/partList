@@ -109,13 +109,17 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function Root() {
+  // useState
   const [open, setOpen] = useState(false);
+  const [openNestedList, setOpenNestedList] = useState(false);
+
+  // functions
+  // toggle menu drawer open / closed
   const toggleDrawer = () => {
     setOpen(!open);
     setOpenNestedList(!open);
   };
-
-  const [openNestedList, setOpenNestedList] = useState(false);
+  // click handlers
   const handleNestedClick = () => {
     setOpen(true);
     setOpenNestedList(!openNestedList);
@@ -131,6 +135,7 @@ export default function Root() {
     setSelectedIndex(id);
   };
 
+  // mui theme
   const theme = createTheme({
     palette: {
       primary: {
@@ -144,6 +149,7 @@ export default function Root() {
     },
   });
 
+  // useEffect
   useEffect(() => {
     if (value) {
       navigate(`contacts/${value.id}`);
