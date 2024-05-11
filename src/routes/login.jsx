@@ -1,5 +1,5 @@
 import { Form, redirect, useLocation, useNavigation } from "react-router-dom";
-import { authProvider } from "../auth";
+import { authProvider } from "../data/authProvider";
 import * as React from "react";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";

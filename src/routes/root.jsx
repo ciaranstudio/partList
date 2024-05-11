@@ -8,10 +8,10 @@ import {
   redirect,
   useNavigate,
 } from "react-router-dom";
-import { getContacts, createContact } from "../contacts";
-import { authProvider } from "../auth";
-import AuthStatus from "../AuthStatus";
-import Copyright from "../Copyright";
+import { getContacts, createContact } from "../data/contacts";
+import { authProvider } from "../data/authProvider";
+import AuthStatus from "../components/AuthStatus";
+import Copyright from "../components/Copyright";
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import MuiDrawer from "@mui/material/Drawer";

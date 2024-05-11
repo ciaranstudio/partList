@@ -1,8 +1,8 @@
 import { Canvas } from "@react-three/fiber";
 import { Leva } from "leva";
-import Experience from "../Experience.jsx";
+import Experience from "../components/scene/Experience.jsx";
 import { useLoaderData } from "react-router-dom";
-import { getContacts } from "../contacts";
+import { getContacts } from "../data/contacts.js";
 
 export async function loader({ request }) {
   const url = new URL(request.url);

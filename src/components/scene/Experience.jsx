@@ -2,7 +2,7 @@ import * as React from "react";
 import { Suspense, useEffect, useRef } from "react";
 import { Cloud, Sky, OrbitControls } from "@react-three/drei";
 import { Perf } from "r3f-perf";
-import controls from "./debugControls";
+import controls from "../../data/debugControls";
 import CubeAndSpheres from "./CubeAndSpheres";
 
 export default function Experience({ contacts, perfVisible }) {

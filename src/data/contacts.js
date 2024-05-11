@@ -10,7 +10,7 @@ import {
   deleteDoc,
   Timestamp,
 } from "firebase/firestore";
-import { db } from "./firebaseConfig";
+import { db } from "../firebaseConfig";
 
 export async function getContacts() {
   const querySnapshot = await getDocs(collection(db, "participants"));

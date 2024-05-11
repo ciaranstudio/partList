@@ -2,8 +2,8 @@ import * as React from "react";
 import { useRef } from "react";
 import * as THREE from "three";
 import { Geometry, Base, Subtraction } from "@react-three/csg";
-import controls from "./debugControls";
-import { missionText } from "./missionText";
+import controls from "../../data/debugControls";
+import { missionText } from "../../data/missionText";
 import SphereObjects from "./SphereObjects";
 import TextDetails from "./TextDetails";
 

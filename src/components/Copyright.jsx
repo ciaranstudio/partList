@@ -1,6 +1,6 @@
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
-import { authProvider } from "./auth";
+import { authProvider } from "../data/authProvider";
 
 export default function Copyright(props) {
   return (

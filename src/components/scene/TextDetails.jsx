@@ -3,7 +3,7 @@ import { useRef, createRef, useEffect, useState } from "react";
 import * as THREE from "three";
 import { Geometry, Base, Subtraction } from "@react-three/csg";
 import { Edges, Text, Text3D } from "@react-three/drei";
-import controls from "./debugControls";
+import controls from "../../data/debugControls";
 
 export default function TextDetails({
   contacts,

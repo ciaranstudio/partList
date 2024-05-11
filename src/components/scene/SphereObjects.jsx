@@ -3,7 +3,7 @@ import { useRef, useState, useEffect } from "react";
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import { Float, MeshDistortMaterial } from "@react-three/drei";
-import controls from "./debugControls";
+import controls from "../../data/debugControls";
 
 export default function SphereObjects({ contacts }) {
   const smallestSphereRef = useRef();

@@ -4,26 +4,26 @@ import {
   createBrowserRouter,
   redirect,
 } from "react-router-dom";
-import { authProvider } from "./auth";
+import { authProvider } from "./data/authProvider";
 import "./index.css";
 import Root, {
   loader as rootLoader,
   action as rootAction,
-} from "./routes/root";
-import ErrorPage from "./errorPage";
+} from "./routes/Root";
+import ErrorPage from "./components/ErrorPage";
 import Contact, {
   loader as contactLoader,
   action as contactAction,
-} from "./routes/contact";
-import EditContact, { action as editAction } from "./routes/edit";
-import { action as destroyAction } from "./routes/destroy";
-import Index from "./routes/index";
+} from "./routes/Contact";
+import EditContact, { action as editAction } from "./routes/Edit";
+import { action as destroyAction } from "./routes/Destroy";
+import Index from "./routes/Index";
 import LoginPage, {
   loader as loginLoader,
   action as loginAction,
-} from "./routes/login";
-import CanvasLayout, { loader as canvasLoader } from "./routes/canvas";
-import debugControls from "./debugControls";
+} from "./routes/Login";
+import CanvasLayout, { loader as canvasLoader } from "./routes/Canvas";
+import debugControls from "./data/debugControls";
 
 const router = createBrowserRouter([
   {
