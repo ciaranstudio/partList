@@ -3,14 +3,13 @@ import { Link } from "react-router-dom";
 import { authProvider } from "../data/authProvider";
 
 export default function Copyright(props) {
-  return (
+  return (    
     <Typography
       variant="body2"
       color="text.secondary"
       align="center"
       {...props}
-    >
-      {/* {"Copyright © "} */}
+    >     
       <Link
         component={Link}
         color="inherit"
